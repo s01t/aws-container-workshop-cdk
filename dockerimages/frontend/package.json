@@ -1,0 +1,30 @@
+{
+  "name": "nuxt-ws",
+  "version": "1.0.0",
+  "description": "Nuxt Project for Container Workshop",
+  "author": "s01t2w",
+  "private": true,
+  "license": "UNLICENSED",
+  "scripts": {
+    "dev": "cross-env NODE_ENV=development nodemon server/index.js --watch server",
+    "build": "nuxt build",
+    "start": "cross-env NODE_ENV=production node server/index.js",
+    "generate": "nuxt generate"
+  },
+  "dependencies": {
+    "@nuxtjs/axios": "^5.3.6",
+    "aws-xray-sdk": "^2.5.0",
+    "cross-env": "^5.2.0",
+    "express": "^4.16.4",
+    "express-healthcheck": "^0.1.0",
+    "http": "0.0.0",
+    "morgan": "^1.9.1",
+    "node": "^13.3.0",
+    "node-sass": "^4.13.0",
+    "nuxt": "^2.0.0"
+  },
+  "devDependencies": {
+    "nodemon": "^1.18.9",
+    "@nuxtjs/vuetify": "^1.0.0"
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "region": "us-west-2",
+  "ClientIp": "",
+  "dockerimagedirectory": "dockerimages",
+  "frontend": {
+    "image": "frontend",
+    "portnumber": 3000,
+    "AWS_NODEJS_CONNECTION_REUSE_ENABLED": "1"
+  },
+  "backend": {
+    "image": "backend",
+    "portnumber": 3000,
+    "AWS_NODEJS_CONNECTION_REUSE_ENABLED": "1"
+  }
+}

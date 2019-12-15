@@ -1,0 +1,19 @@
+version: '3'
+services:
+
+  frontend:
+    build: ./frontend
+    image: frontend
+    container_name: frontend-local
+    ports:
+      - 8080:3000
+
+  backend:
+    build: ./backend
+    image: backend
+    container_name: backend-local
+    ports:
+      - 5000:5000
+    environment:
+      AWS_ACCESS_KEY_ID: ${AWS_ACCESS_KEY_ID}
+      AWS_SECRET_ACCESS_KEY: ${AWS_SECRET_ACCESS_KEY}
