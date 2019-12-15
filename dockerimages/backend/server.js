@@ -4,7 +4,8 @@ const bodyParser = require("body-parser");
 const cors = require("cors");
 const uuid = require("uuid");
 const XRay = require("aws-xray-sdk");
-const AWS = XRay.captureAWS(require('aws-sdk'));
+//const AWS = XRay.captureAWS(require('aws-sdk'));
+const AWS = require('aws-sdk');
 
 app.set("port", process.env.PORT || 5000);
 app.use(bodyParser.json());
