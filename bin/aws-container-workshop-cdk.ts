@@ -83,23 +83,23 @@ const ddbtablestack = new DDBtableStack(app, "DDBTableStack-ConWS", {
   },
 });
 
-const frontxraystack = new XraydaemonStack(app, "FrontXrayStack-ConWS", {
-  env: {
-    account: process.env["CDK_DEFAULT_ACCOUNT"],
-    region: region,
-  },
-  containerapp: "frontend",
-  taskDefinition: frontendappstack.taskDefinition,
-});
-
-const backxraystack = new XraydaemonStack(app, "BackXrayStack-ConWS", {
-  env: {
-    account: process.env["CDK_DEFAULT_ACCOUNT"],
-    region: region,
-  },
-  containerapp: "backend",
-  taskDefinition: backendappstack.taskDefinition,
-});
+// const frontxraystack = new XraydaemonStack(app, "FrontXrayStack-ConWS", {
+//   env: {
+//     account: process.env["CDK_DEFAULT_ACCOUNT"],
+//     region: region,
+//   },
+//   containerapp: "frontend",
+//   taskDefinition: frontendappstack.taskDefinition,
+// });
+//
+// const backxraystack = new XraydaemonStack(app, "BackXrayStack-ConWS", {
+//   env: {
+//     account: process.env["CDK_DEFAULT_ACCOUNT"],
+//     region: region,
+//   },
+//   containerapp: "backend",
+//   taskDefinition: backendappstack.taskDefinition,
+// });
 
 
 const cloud9stack = new Cloud9Stack(app, "Cloud9Stack-ConWS", {
