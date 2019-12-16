@@ -53,6 +53,9 @@ const ddbclient = new AWS.DynamoDB.DocumentClient({
 const tablenanme = "messagestable";
 
 app.get("/messages/", (req, res) => {
+  // var seg = XRay.getSegment();
+  // seg.addAnnotation("service", "backend-scan");
+
   params = {
     TableName: tablenanme
   };
@@ -73,6 +76,9 @@ app.get("/messages/", (req, res) => {
 });
 
 app.get("/messages/:messageId/", (req, res) => {
+  // var seg = XRay.getSegment();
+  // seg.addAnnotation("service", "backend-query");
+
   params = {
     TableName: tablenanme,
     KeyConditionExpression: "id = :i",
@@ -97,6 +103,9 @@ app.get("/messages/:messageId/", (req, res) => {
 });
 
 app.post("/messages", (req, res, next) => {
+  // var seg = XRay.getSegment();
+  // seg.addAnnotation("service", "backend-post");
+
   params = {
     TableName: tablenanme,
     Item: {
@@ -122,8 +131,8 @@ app.post("/messages", (req, res, next) => {
 });
 
 app.delete("/messages/:messageId/", (req, res) => {
-  var seg = XRay.getSegment();
-  seg.addAnnotation("service", "backend-delete");
+  // var seg = XRay.getSegment();
+  // seg.addAnnotation("service", "backend-delete");
 
   params = {
     TableName: tablenanme,

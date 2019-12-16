@@ -9,7 +9,7 @@
   },
   "backend": {
     "image": "backend",
-    "portnumber": 3000,
+    "portnumber": 5000,
     "AWS_NODEJS_CONNECTION_REUSE_ENABLED": "1"
   }
 }
