@@ -30,7 +30,7 @@ export class ClusterStack extends cdk.Stack {
 
     // Private DNS Namespace for ECS
     this.cluster.addDefaultCloudMapNamespace({
-      name: "myservice.local",
+      name: this.node.tryGetContext("namespace")  || "myservice.local",
       type: servicediscovery.NamespaceType.DNS_PRIVATE,
       vpc: props.vpc,
     })
