@@ -20,13 +20,19 @@ export class FrontendAppStack extends cdk.Stack {
   constructor(scope: cdk.Construct, id: string, props: FrontendAppStackProps) {
     super(scope, id, props);
 
-    // Create Task Role
+    // Create Task Exe Role
     const rolepolicy = iam.ManagedPolicy.fromAwsManagedPolicyName(
       "service-role/AmazonECSTaskExecutionRolePolicy"
     );
-    const taskrole = new iam.Role(this, "ecstaskrole", {
+
+    const taskexerole = new iam.Role(this, "ecstaskexerole", {
       assumedBy: new iam.ServicePrincipal("ecs-tasks.amazonaws.com"),
       managedPolicies: [rolepolicy]
+    });
+
+    // Create Task Role
+    const taskrole = new iam.Role(this, "ecstaskrole", {
+      assumedBy: new iam.ServicePrincipal("ecs-tasks.amazonaws.com"),
     });
 
     // Set Task definition
@@ -35,7 +41,8 @@ export class FrontendAppStack extends cdk.Stack {
       "Task-ConWS" + this.stackName,
       {
         cpu: 256, //256 (.25 vCPU) - Available memory values: 512 (0.5 GB), 1024 (1 GB), 2048 (2 GB),
-        taskRole: taskrole
+        executionRole : taskexerole,
+        taskRole: taskrole,
       }
     );
 
@@ -135,7 +142,9 @@ export class FrontendAppStack extends cdk.Stack {
       protocol: elb.ApplicationProtocol.HTTP,
       targets: [ecsService],
       healthCheck: {
-        path: "/health"
+        path: "/health",
+          interval: cdk.Duration.seconds(20),
+          healthyThresholdCount: 2,
       }
     });
 
