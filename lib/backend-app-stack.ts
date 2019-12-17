@@ -116,11 +116,11 @@ export class BackendAppStack extends cdk.Stack {
         taskDefinition: this.taskDefinition,
         desiredCount: 2,
         minHealthyPercent: 50,
-        maxHealthyPercent: 100,
+        maxHealthyPercent: 200,
         serviceName: props.containerapp + "Svc-ConWS",
         cloudMapOptions: {
           dnsRecordType: servicediscovery.DnsRecordType.A,
-          dnsTtl: cdk.Duration.seconds(30),
+          dnsTtl: cdk.Duration.seconds(20),
           name: props.containerapp
         },
         vpcSubnets: {

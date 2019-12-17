@@ -117,7 +117,7 @@ export class FrontendAppStack extends cdk.Stack {
         taskDefinition: this.taskDefinition,
         desiredCount: 2,
         minHealthyPercent: 50,
-        maxHealthyPercent: 100,
+        maxHealthyPercent: 200,
         serviceName: props.containerapp + "Svc-ConWS",
         // cloudMapOptions: {
         //   dnsRecordType: servicediscovery.DnsRecordType.A,
