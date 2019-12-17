@@ -8,7 +8,6 @@ FROM alpine:3.10.3
 WORKDIR /app
 COPY --from=builder  /usr/src/app .
 RUN apk --no-cache --virtual add nodejs nodejs-npm && \
-  npm install --no-optional --no-shrinkwrap --no-package-lock && \
   npm run build && \
   rm -rvf /var/cache/* /root/.npm /tmp/* 2>/dev/null && \
   mkdir -p /var/chache/apk
